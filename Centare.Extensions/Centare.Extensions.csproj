@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,10 +6,11 @@
     <Company>Centare</Company>
     <Authors>Centare</Authors>
     <PackageLicenseUrl>https://github.com/centare/Centare.Extensions/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/centare/Centare.Extensions</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/centare/Centare.Extensions/wiki</PackageProjectUrl>
     <PackageIconUrl>https://www.centare.com/img/logo-centare-vertical.svg</PackageIconUrl>
     <RepositoryUrl>https://github.com/centare/Centare.Extensions</RepositoryUrl>
     <Copyright>Copyright (c) 2018 Centare</Copyright>
+    <Version>1.0.*</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
