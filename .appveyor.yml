@@ -23,6 +23,14 @@ artifacts:
    name: Centare.Extensions
    type: NuGetPackage
 clone_depth: 1
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
 test_script:
   - cmd: dotnet test ./Centare.Extensions.Tests/Centare.Extensions.Tests.csproj
 deploy:  
