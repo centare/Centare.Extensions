@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Centare.Extensions", "Centare.Extensions\Centare.Extensions.csproj", "{B6BACF16-71EC-43B6-BC7A-A00DA9DC184E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Centare.Extensions", "Centare.Extensions\Centare.Extensions.csproj", "{B6BACF16-71EC-43B6-BC7A-A00DA9DC184E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Centare.Extensions.Tests", "Centare.Extensions.Tests\Centare.Extensions.Tests.csproj", "{A8D48F5D-E09A-457C-A5DE-26753F6D945E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Centare.Extensions.Tests", "Centare.Extensions.Tests\Centare.Extensions.Tests.csproj", "{A8D48F5D-E09A-457C-A5DE-26753F6D945E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{25A824A8-4461-4939-AB8A-46DC6ECE4E85}"
+	ProjectSection(SolutionItems) = preProject
+		.appveyor.yml = .appveyor.yml
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
