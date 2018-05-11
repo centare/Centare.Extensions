@@ -19,7 +19,7 @@ build_script:
 after_build:
   # For when the build has completed
 artifacts:
- - path: '.\artifacts\**\*.nupkg'
+ - path: '\**\*.nupkg'
    name: Centare.Extensions
    type: NuGetPackage
 clone_depth: 1
