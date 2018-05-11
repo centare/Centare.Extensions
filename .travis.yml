@@ -1,8 +1,0 @@
-language: csharp
-mono: none
-dotnet: 2.1.200
-install:
-- dotnet restore
-script:
-- dotnet build
-- dotnet test Centare.Extensions.Tests/Centare.Extensions.Tests.csproj
