@@ -11,6 +11,7 @@
     <RepositoryUrl>https://github.com/centare/Centare.Extensions</RepositoryUrl>
     <Copyright>Copyright (c) 2018 Centare</Copyright>
     <Version>1.0.0</Version>
+    <PackageVersion>1.0.0</PackageVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
