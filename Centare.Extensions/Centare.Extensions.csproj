@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Company>Centare</Company>
+    <Authors>Centare</Authors>
+    <PackageLicenseUrl>https://github.com/centare/Centare.Extensions/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/centare/Centare.Extensions</PackageProjectUrl>
+    <PackageIconUrl>https://www.centare.com/img/logo-centare-vertical.svg</PackageIconUrl>
+    <RepositoryUrl>https://github.com/centare/Centare.Extensions</RepositoryUrl>
+    <Copyright>Copyright (c) 2018 Centare</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
