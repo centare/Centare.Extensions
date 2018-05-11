@@ -19,7 +19,7 @@ build_script:
 after_build:
   # For when the build has completed
 artifacts:
- - path: '\bin\Debug\netstandard2.0\publish'
+ - path: '.\artifacts\**\*.nupkg'
    name: Centare.Extensions
    type: NuGetPackage
 clone_depth: 1
