@@ -30,7 +30,7 @@ namespace Centare.Extensions
         {
             first = array.ValueOrDefault(0);
             second = array.ValueOrDefault(1);
-            third = array.ValueOrDefault(3);
+            third = array.ValueOrDefault(2);
         }
 
         public static void Deconstruct<T>(
