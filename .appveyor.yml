@@ -1,0 +1,42 @@
+version: '1.0.{build}'
+image: Visual Studio 2017
+pull_requests:  
+  do_not_increment_build_number: true
+nuget:  
+  disable_publish_on_pr: true
+branches:
+  only:
+  - master
+init:
+  - cmd: git config --global core.autocrlf true
+install:
+  # Install repo specific stuff here
+before_build:
+  - cmd: dotnet --version
+  - cmd: dotnet restore ./Centare.Extensions/Centare.Extensions.csproj --verbosity m
+build_script:
+  - cmd: dotnet publish ./Centare.Extensions/Centare.Extensions.csproj
+after_build:
+  # For when the build has completed
+artifacts:
+ - path: '\src\bin\Release\netstandard2.9\publish'
+   name: Centare.Extensions
+   type: NuGetPackage
+clone_depth: 1
+test_script:
+  - cmd: dotnet test ./Centare.Extensions.Tests/Centare.Extensions.Tests.csproj
+deploy:  
+- provider: NuGet
+  server: https://www.myget.org/F/davidpine/api/v2
+  api_key:
+    secure: D52JBrGhLfNV1rCz1PDIIc6vXadypBkQKbXnyPcJOMmIZwAd+gVPX/O4FIMV2Zq/
+  skip_symbols: true
+  on:
+    branch: master
+- provider: NuGet
+  name: production
+  api_key:
+    secure: v5/SYad/QA7gXMU4Y08/YtB3kBF3T4UNSVmT++pYizqGlPlWr5gpx+VQIqiD2OEP
+  on:
+    branch: master
+    appveyor_repo_tag: true
