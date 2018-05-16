@@ -62,7 +62,7 @@ namespace Centare.Extensions
                 var result = await t.task;
                 var isValueType = typeof(T).IsValueType;
                 return (isValueType && default(T).Equals(result))
-                    || (!isValueType && result == default)
+                    || (!isValueType && result == null)
                     ? defaultValue 
                     : result;
             }
