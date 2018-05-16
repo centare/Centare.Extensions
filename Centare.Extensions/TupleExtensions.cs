@@ -60,7 +60,11 @@ namespace Centare.Extensions
             try
             {
                 var result = await t.task;
-                return result == default ? defaultValue : result;
+                var isValueType = typeof(T).IsValueType;
+                return (isValueType && default(T).Equals(result))
+                    || (!isValueType && result == default)
+                    ? defaultValue 
+                    : result;
             }
             catch (Exception ex) when (ex.TryLogException(t.logger))
             {
