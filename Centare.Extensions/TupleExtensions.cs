@@ -1,5 +1,9 @@
 ﻿// Copyright (c) 2018 Centare
 
+using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
+
 namespace Centare.Extensions
 {
     public static class TupleExtensions
@@ -17,24 +21,55 @@ namespace Centare.Extensions
             => (result: (ushort)(numerator / denominator), remainder: (ushort)(numerator % denominator));
 
         public static (int result, int remainder) DividedBy(this int numerator, int denominator)
-            => (result: (int)(numerator / denominator), remainder: (int)(numerator % denominator));
+            => (result: numerator / denominator, remainder: numerator % denominator);
 
         public static (uint result, uint remainder) DividedBy(this uint numerator, uint denominator)
-            => (result: (uint)(numerator / denominator), remainder: (uint)(numerator % denominator));
+            => (result: numerator / denominator, remainder: numerator % denominator);
 
         public static (long result, long remainder) DividedBy(this long numerator, long denominator)
-            => (result: (long)(numerator / denominator), remainder: (long)(numerator % denominator));
+            => (result: numerator / denominator, remainder: numerator % denominator);
 
         public static (ulong result, ulong remainder) DividedBy(this ulong numerator, ulong denominator)
-            => (result: (ulong)(numerator / denominator), remainder: (ulong)(numerator % denominator));
+            => (result: numerator / denominator, remainder: numerator % denominator);
 
         public static (float result, float remainder) DividedBy(this float numerator, float denominator)
-            => (result: (float)(numerator / denominator), remainder: (float)(numerator % denominator));
+            => (result: numerator / denominator, remainder: numerator % denominator);
 
         public static (double result, double remainder) DividedBy(this double numerator, double denominator)
-            => (result: (double)(numerator / denominator), remainder: (double)(numerator % denominator));
+            => (result: numerator / denominator, remainder: numerator % denominator);
 
         public static (decimal result, decimal remainder) DividedBy(this decimal numerator, decimal denominator)
-            => (result: (decimal)(numerator / denominator), remainder: (decimal)(numerator % denominator));
+            => (result: numerator / denominator, remainder: numerator % denominator);
+
+        public static async Task TryAwaitOrLogAsync(
+            this (Task task, ILogger logger) t)
+        {
+            try
+            {
+                await t.task;
+            }
+            catch (Exception ex) when (ex.TryLogException(t.logger))
+            {
+            }
+        }
+
+        public static async Task<T> TryAwaitOrLogAsync<T>(
+            this (Task<T> task, ILogger logger) t,
+            T defaultValue = default)
+        {
+            try
+            {
+                var result = await t.task;
+                var isValueType = typeof(T).IsValueType;
+                return (isValueType && default(T).Equals(result))
+                    || (!isValueType && result == null)
+                    ? defaultValue 
+                    : result;
+            }
+            catch (Exception ex) when (ex.TryLogException(t.logger))
+            {
+                return defaultValue;
+            }
+        }
     }
 }

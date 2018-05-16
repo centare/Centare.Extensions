@@ -38,7 +38,7 @@ namespace Centare.Extensions.Tests
 
         [Theory, MemberData(nameof(ToEnumInput))]
         public void ToEnumTests<TEnum>(string from, TEnum expected)
-            where TEnum : struct, IComparable, IFormattable, IConvertible 
+            where TEnum : struct, Enum
             => Assert.Equal(expected, from.ToEnum<TEnum>());
 
         [Fact]

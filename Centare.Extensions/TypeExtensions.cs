@@ -19,7 +19,7 @@ namespace Centare.Extensions
             => !(type.IsAbstract || type.IsGenericTypeDefinition || type.IsInterface);
 
         public static Dictionary<string, TEnum> ToDictionary<TEnum>(this Type type)
-            where TEnum : struct, IComparable, IFormattable, IConvertible
+            where TEnum : struct, Enum
         {
             if (!type.IsEnum) new Dictionary<string, TEnum>();
 
