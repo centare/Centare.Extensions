@@ -1,5 +1,9 @@
 ﻿// Copyright (c) 2018 Centare
 
+using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
+
 namespace Centare.Extensions
 {
     public static class TupleExtensions
@@ -36,5 +40,36 @@ namespace Centare.Extensions
 
         public static (decimal result, decimal remainder) DividedBy(this decimal numerator, decimal denominator)
             => (result: (decimal)(numerator / denominator), remainder: (decimal)(numerator % denominator));
+
+        public static async Task TryAwaitOrLogAsync(
+            this(Task task, ILogger logger) t)
+        {
+            try
+            {
+                await t.task;
+            }
+            catch (Exception ex) when (ex.TryLogException(t.logger))
+            {
+            }
+        }
+
+        public static async Task<T> TryAwaitOrLogAsync<T>(
+            this (Task<T> task, ILogger logger) t,
+            T defaultValue = default)
+        {
+            try
+            {
+                var result = await t.task;
+                var isValueType = typeof(T).IsValueType;
+                return (isValueType && default(T).Equals(result))
+                    || (!isValueType && result == null)
+                    ? defaultValue 
+                    : result;
+            }
+            catch (Exception ex) when (ex.TryLogException(t.logger))
+            {
+                return defaultValue;
+            }
+        }
     }
 }
