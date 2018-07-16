@@ -39,6 +39,5 @@ namespace Centare.Extensions
             string value, 
             StringComparison comp = StringComparison.OrdinalIgnoreCase)
             => source?.IndexOf(value ?? string.Empty, comp) >= 0;
-
     }
 }
