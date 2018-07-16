@@ -28,7 +28,7 @@ namespace Centare.Extensions
         }
 
         public static TEnum ToEnum<TEnum>(
-            this string value) where TEnum : struct, IComparable, IFormattable, IConvertible
+            this string value) where TEnum : struct, Enum
             => !string.IsNullOrWhiteSpace(value) &&
                    Enum.TryParse(value, true, out TEnum result)
                        ? result

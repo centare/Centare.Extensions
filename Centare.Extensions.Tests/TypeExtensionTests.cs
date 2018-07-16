@@ -106,7 +106,7 @@ namespace Centare.Extensions.Tests
 
         [Theory, MemberData(nameof(ToDictionaryInput))]
         public void ToDictionaryTests<TEnum>(Type type, Dictionary<string, TEnum> expected)
-            where TEnum : struct, IComparable, IFormattable, IConvertible
+            where TEnum : struct, Enum
         {
             var actual = type.ToDictionary<TEnum>();
             Assert.Equal(expected.Count, actual.Count);
